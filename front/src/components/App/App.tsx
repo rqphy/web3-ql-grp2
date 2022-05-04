@@ -42,7 +42,7 @@ export const App: FunctionComponent = () => {
 
   const onEqualButtonClick = () => {
     console.log('on equel and fetching ====');
-    setResult('34')
+    setResult('34 on attend le fetch, raph et hugo bossez svp')
     
   }
 
