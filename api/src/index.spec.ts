@@ -12,6 +12,15 @@ it("Simple reverse polish addition", function () {
   expect(evalPostExpression(parameter)).toEqual(expectedResult)
 })
 
+it("Test multiple spaces", function () {
+
+  const parameter = '1 1  +'
+
+  const expectedResult = '2'
+
+  expect(evalPostExpression(parameter)).toEqual(expectedResult)
+})
+
 it("Regular Infix addition", function () {
 
   const parameter = '1 + 1'
