@@ -53,12 +53,6 @@ export const App: FunctionComponent = () => {
     setAlertMessage(``);
   }
 
-  const onClearEntryButtonClick = () => {
-    setDisplay('0')
-    setWaitingForOperand(true)
-    setAlertMessage(``);
-  }
-
   return (
     <>
     <StyledApp>
@@ -67,7 +61,6 @@ export const App: FunctionComponent = () => {
         onDigitButtonClick={onDigitButtonClick}
         onEqualButtonClick={onEqualButtonClick}
         onAllClearButtonClick={onAllClearButtonClick}
-        onClearEntryButtonClick={onClearEntryButtonClick}
       />
     </StyledApp>
     <StyledMessages>

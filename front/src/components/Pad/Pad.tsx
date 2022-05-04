@@ -7,7 +7,6 @@ interface PadProps {
   onDigitButtonClick: (digit: String) => void
   onEqualButtonClick: () => void
   onAllClearButtonClick: () => void
-  onClearEntryButtonClick: () => void
 }
 
 const StyledPad = styled.div`
@@ -20,7 +19,6 @@ export const Pad: FunctionComponent<PadProps> = ({
   onDigitButtonClick,
   onEqualButtonClick,
   onAllClearButtonClick,
-  onClearEntryButtonClick
 }) => {
   const handleKeyDown = ({ keyCode, shiftKey }: KeyboardEvent) => {
     console.log(keyCode)
@@ -35,7 +33,7 @@ export const Pad: FunctionComponent<PadProps> = ({
     } else if (keyCode === 13 || (keyCode === 187 && !shiftKey)) {
       onEqualButtonClick()
     } else if (keyCode === 46) {
-      onClearEntryButtonClick()
+      onDigitButtonClick(' ')
     } else if (keyCode === 27) {
       onAllClearButtonClick()
     }
@@ -51,8 +49,8 @@ export const Pad: FunctionComponent<PadProps> = ({
       <Button color="red" onClick={onAllClearButtonClick}>
         AC
       </Button>
-      <Button onClick={onClearEntryButtonClick}>
-        C
+      <Button onClick={() => onDigitButtonClick(' ')}>
+        Space
       </Button>
       <Button color="dark" onClick={() => onDigitButtonClick('NEGATE')}>
        NEGATE
