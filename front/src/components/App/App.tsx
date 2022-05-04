@@ -32,12 +32,18 @@ export const App: FunctionComponent = () => {
   // Pad buttons handlers
   const onDigitButtonClick = (digit: String) => {
     let newDisplay = display
+    
+    if(digit === ' ') {
+      if(display[display.length - 1] === ' ') return
+    } 
+    
     if(newDisplay.length > maximumDigits ) {
       setAlertMessage(`Chiffre maxium autorisé est de 11${maximumDigits}`);
       return
     }
+    
     setDisplay(newDisplay + digit.toString())
-    setAlertMessage(``);
+    setAlertMessage('');
   }
 
   const onEqualButtonClick = () => {
