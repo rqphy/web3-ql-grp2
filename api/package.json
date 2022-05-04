@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --config --coverage jest.config.json",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\"",
+    "serve": "nodemon server.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -43,5 +44,8 @@
   "bugs": {
     "url": "https://github.com/mathieueveillard/js-kata-starter/issues"
   },
-  "homepage": "https://github.com/mathieueveillard/js-kata-starter#readme"
+  "homepage": "https://github.com/mathieueveillard/js-kata-starter#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
