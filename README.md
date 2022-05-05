@@ -7,12 +7,14 @@ Calculateur d'expression en notation polonaise inversée
 ### Front
 
 ```bash
+cd front/
 npm i
 npm start
 ```
 
 ### API
 ```bash
+cd api/
 npm i
 npm run serve
 ```
