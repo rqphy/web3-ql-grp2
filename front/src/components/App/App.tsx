@@ -48,7 +48,6 @@ export const App: FunctionComponent = () => {
   }
 
   const onEqualButtonClick = async () => {
-    setResult('34 on attend le fetch, raph et hugo bossez svp')
     const res = await axios.post('http://localhost:4000', {
       "expression": display
     })
@@ -58,7 +57,7 @@ export const App: FunctionComponent = () => {
 
   const onAllClearButtonClick = () => {
     setPendingOperator(undefined)
-    setDisplay('0')
+    setDisplay('')
     setWaitingForOperand(true)
     setAlertMessage(``);
   }

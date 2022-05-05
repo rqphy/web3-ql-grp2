@@ -21,7 +21,6 @@ export const Pad: FunctionComponent<PadProps> = ({
   onAllClearButtonClick,
 }) => {
   const handleKeyDown = ({ keyCode, shiftKey }: KeyboardEvent) => {
-    console.log(keyCode)
     if (keyCode === 107 || (keyCode === 187 && shiftKey)) {
       onDigitButtonClick('+')
     } else if (keyCode === 109 || keyCode === 189) {
