@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
+import axios from 'axios'
 import styled from 'styled-components'
 import Display from '../Display/Display'
 import Result from '../Result/Result'
@@ -25,7 +26,7 @@ export const App: FunctionComponent = () => {
   const [alertMessage, setAlertMessage] = useState<string>('')
   const [waitingForOperand, setWaitingForOperand] = useState<boolean>(true)
   const [pendingOperator, setPendingOperator] = useState<Operator>()
-  const [display, setDisplay] = useState<string>('0')
+  const [display, setDisplay] = useState<string>('')
 
   const maximumDigits = 40;
   
@@ -46,9 +47,12 @@ export const App: FunctionComponent = () => {
     setAlertMessage('');
   }
 
-  const onEqualButtonClick = () => {
-    console.log('on equel and fetching ====');
+  const onEqualButtonClick = async () => {
     setResult('34 on attend le fetch, raph et hugo bossez svp')
+    const res = await axios.post('http://localhost:4000', {
+      "expression": display
+    })
+    setResult(res.data.result)
     
   }
 
