@@ -59,3 +59,6 @@ const operatorsList = {
     "*": (a, b) => a * b,
     "/": (a, b) => a / b
 }
+
+exports.evalPostExpression = evalPostExpression
+exports.generateResponse = generateResponse
