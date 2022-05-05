@@ -1,48 +1,61 @@
-export function evalPostExpression(expression: string): string
+export const evalPostExpression = (expression: string): string =>
 {
-    const operatorsList = {
-        "+": (a, b) => a + b,
-        "-": (a, b) => a - b,
-        "*": (a, b) => a * b,
-        "/": (a, b) => a / b
-    }
 
     const formatedExpression = expression.split(' ')
 
-    const stack = []
+    let stack = []
 
     for (const character of formatedExpression)
     {
-        // if it's a value, push it onto the stack
-        if (/\d/.test( character ))
+        if (/\d/.test(character))
         {
-            stack.push( character )
+            stack.push(character)
         }
 
-        // else if it's an operator
         else if (character in operatorsList)
         {
-
-            const b = +stack.pop()
-            const a = +stack.pop()
-
-            const value = operatorsList[character](a, b)
-            stack.push(value)
-
+            computeStack(stack, character)
         }
 
-        else if(character == 'NEGATE')
+        else if (character == 'NEGATE')
         {
-            stack[stack.length - 1] *= -1
+            stack = negateLastValue(stack)
         }
-
-        // else NEGATE thing
     }
 
-    if (stack.length > 1 || stack[0] == 'Infinity')
+    return generateResponse(stack)
+}
+
+const generateResponse = (stack: number[]): string =>
+{
+    if (stack.length > 1 || stack[0] == Infinity)
     {
         return 'ParseError'
     }
 
     return stack[0].toString()
+}
+
+const computeStack = (stack: number[], operator: string): number[] =>
+{
+    const b = +stack.pop()
+    const a = +stack.pop()
+
+    const value = operatorsList[operator](a, b)
+    stack.push(value)
+
+    return stack
+}
+
+const negateLastValue = (stack: number[]): number[] =>
+{
+    stack[stack.length - 1] *= -1
+    return stack
+}
+
+const operatorsList = {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "*": (a, b) => a * b,
+    "/": (a, b) => a / b
 }
